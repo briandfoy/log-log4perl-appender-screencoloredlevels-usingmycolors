@@ -1,0 +1,6 @@
+*.bak
+*.gz
+Log-*
+Makefile
+blib
+pm_to_blib
