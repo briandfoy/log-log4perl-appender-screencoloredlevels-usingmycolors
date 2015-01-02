@@ -1,4 +1,3 @@
-# $Id$
 package Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors;
 use strict;
 
