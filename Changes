@@ -1,6 +1,6 @@
 Revision history for Perl module Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors
 
-0.10_01 - Sat Aug  9 06:33:36 2008
+0.10_01 - 2008-08-09
 	* This is the initial release of my first Log4perl appender.
 	I want to choose the colors of the log level!
 
