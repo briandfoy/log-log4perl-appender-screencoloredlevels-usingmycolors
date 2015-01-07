@@ -1,29 +1,41 @@
-use ExtUtils::MakeMaker;
-
 require 5.006;
+use strict;
+use warnings;
 
-eval "use Test::Manifest 1.14";
+my $github    = 'https://github.com/briandfoy/';
+my $main_file = 'lib/Log/Log4perl/Appender/ScreenColoredLevels/UsingMyColors.pm';
 
-WriteMakefile(
-	'NAME'	       => 'Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors',
-	'ABSTRACT'     => 'Colorize messages according to level amd my colors',
-	'VERSION_FROM' => 'lib/UsingMyColors.pm',
-	'LICENSE'      => 'perl',
-	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
+my %WriteMakefile = (
+	'NAME'	        => 'Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors',
+	'ABSTRACT_FROM' => $main_file,
+	'VERSION_FROM'  => $main_file,
+	'LICENSE'       => 'perl',
+	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 	
 	'PREREQ_PM'    => { 
 		'Test::More'           => '0',
 		'Log::Log4perl::Level' => '0',
 		},
 
-	'PM'           => {
-		'lib/UsingMyColors.pm'         => '$(INST_LIBDIR)/UsingMyColors.pm',
-		},
-
-	'MAN3PODS'     => {
-		'lib/UsingMyColors.pm' => '$(INST_MAN3DIR)/Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors.3',
-		},
-
 	clean  => { FILES    => q|Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors-*| },
-
 	);
+
+sub arguments { \%WriteMakefile }
+
+do_it() unless caller;
+sub do_it {
+	require File::Spec;
+	my $MM ='ExtUtils::MakeMaker';
+	my $MM_version =
+		eval{ "$MM " . $WriteMakefile{'CONFIGURE_REQUIRES'}{'ExtUtils::MakeMaker'} }
+			//
+		"$MM 6.64";
+	eval "use $MM_version";
+	eval "use Test::Manifest 1.21" 
+		if -e File::Spec->catfile( qw(t test_manifest) );
+	WriteMakefile( %WriteMakefile );
+	}
+
+
+no warnings;
+__PACKAGE__;
