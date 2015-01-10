@@ -1,10 +1,12 @@
 require 5.008;
+
+package Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors;
 use strict;
 use warnings;
 
 use File::Spec::Functions qw(catfile);
 
-my $module    = 'Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors';
+my $module    = __PACKAGE__;
 ( my $dist = $module ) =~ s/::/-/g;
 
 my $github    = 'https://github.com/briandfoy/Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors';
