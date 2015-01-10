@@ -48,7 +48,7 @@ my %WriteMakefile = (
 			},
 		},
 
-	clean  => { FILES    => q|Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors-*| },
+	clean => { FILES => "$dist-*" },
 	);
 
 sub arguments { \%WriteMakefile }
