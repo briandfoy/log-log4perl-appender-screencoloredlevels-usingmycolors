@@ -12,6 +12,8 @@ $VERSION = '0.10_01';
 use Term::ANSIColor qw(:constants color colored);
 use Log::Log4perl::Level;
 
+=encoding utf8
+
 =head1 NAME
 
 Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors - Colorize messages according to level amd my colors
@@ -34,7 +36,7 @@ Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors - Colorize messages 
 		log4perl.appender.Screen.color.info  = green
 		log4perl.appender.Screen.color.warn  = default
 		log4perl.appender.Screen.color.error = default
-		log4perl.appender.Screen.color.fatal = red		
+		log4perl.appender.Screen.color.fatal = red
     EOT
 
 
@@ -46,69 +48,69 @@ Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors - Colorize messages 
 
 =cut
 
-sub new 
+sub new
 	{
     my( $class, @options ) = @_;
 
 	#print STDERR "Options are ", Dumper( \@options ), "\n";
-	
+
     my $self = {
         name   => "unknown name",
         stderr => 1,
-        
+
         @options,
     	};
 
 	my %trace_color;
-	
+
 	@trace_color{ qw(trace debug info error warn fatal) } = ( '' ) x 6;
-	
+
 	my %Allowed = map { $_, 1 } @{ $Term::ANSIColor::EXPORT_TAGS{constants} };
-	
+
 	foreach my $level ( qw( trace debug info error warn fatal) )
 		{
 		next unless exists $self->{color}{$level};
 		next if lc $self->{color}{$level} eq 'default';
-		
+
 		my @b = map { uc } split /\s+/, $self->{color}{$level};
-		
+
 		foreach my $b ( @b )
 			{
 			die "Illegal color $b" unless exists $Allowed{ $b };
 			}
-			
+
 		$trace_color{ $level } = $self->{color}{$level};
 		}
-	
+
 	$self->{trace_color} = \%trace_color;
-		
+
     bless $self, $class;
 	}
-  
+
  sub _trace_color
  	{
  	my( $self, $level ) = @_;
- 	
+
  	$self->{trace_color}{ lc $level } || '';
  	}
- 	
+
 =item log
 
 =cut
 
 BEGIN { $Term::ANSIColor::EACHLINE = "\n" };
- 
-sub log 
+
+sub log
 	{
     my( $self, %params ) = @_;
 	no strict 'refs';
-		
+
     print { $self->{stderr} ? *STDERR : select }
-    	colored( 
+    	colored(
         	$params{message},
     		$self->_trace_color( $params{log4p_level} )
     		);
-    
+
 	}
 
 =back
