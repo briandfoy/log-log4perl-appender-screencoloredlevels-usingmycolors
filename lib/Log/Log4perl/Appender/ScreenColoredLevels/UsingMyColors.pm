@@ -7,7 +7,7 @@ no warnings;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.10_01';
+$VERSION = '0.111';
 
 use Term::ANSIColor qw(:constants color colored);
 use Log::Log4perl::Level;
@@ -48,8 +48,7 @@ Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors - Colorize messages 
 
 =cut
 
-sub new
-	{
+sub new {
     my( $class, @options ) = @_;
 
 	#print STDERR "Options are ", Dumper( \@options ), "\n";
@@ -67,15 +66,13 @@ sub new
 
 	my %Allowed = map { $_, 1 } @{ $Term::ANSIColor::EXPORT_TAGS{constants} };
 
-	foreach my $level ( qw( trace debug info error warn fatal) )
-		{
+	foreach my $level ( qw( trace debug info error warn fatal) ) {
 		next unless exists $self->{color}{$level};
 		next if lc $self->{color}{$level} eq 'default';
 
 		my @b = map { uc } split /\s+/, $self->{color}{$level};
 
-		foreach my $b ( @b )
-			{
+		foreach my $b ( @b ) {
 			die "Illegal color $b" unless exists $Allowed{ $b };
 			}
 
@@ -87,8 +84,7 @@ sub new
     bless $self, $class;
 	}
 
- sub _trace_color
- 	{
+ sub _trace_color {
  	my( $self, $level ) = @_;
 
  	$self->{trace_color}{ lc $level } || '';
@@ -100,8 +96,7 @@ sub new
 
 BEGIN { $Term::ANSIColor::EACHLINE = "\n" };
 
-sub log
-	{
+sub log {
     my( $self, %params ) = @_;
 	no strict 'refs';
 
@@ -130,13 +125,9 @@ L<Log::Log4perl::Appender::ScreenColoredLevels>, L<Term::ANSIColor>
 
 =head1 SOURCE AVAILABILITY
 
-This source is part of a SourceForge project which always has the
-latest sources in CVS, as well as all of the previous releases.
+This source is on GitHub:
 
-	http://sourceforge.net/projects/brian-d-foy/
-
-If, for some reason, I disappear from the world, one of the other
-members of the project can shepherd this module appropriately.
+	https://github.com/briandfoy/log-log4perl-appender-screencoloredlevels-usingmycolors
 
 =head1 AUTHOR
 
@@ -144,7 +135,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright © 2008-2015, brian d foy <bdfoy@cpan.org>. All rights reserved.
+Copyright © 2008-2016, brian d foy <bdfoy@cpan.org>. All rights reserved.
 
 You may redistribute this under the same terms as Perl itself.
 
