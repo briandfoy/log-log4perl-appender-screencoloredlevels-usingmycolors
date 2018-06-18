@@ -69,4 +69,4 @@
 \.releaserc
 \.lwpcookies
 \.travis\.yml
-\?.appveyor\.yml
+\.?appveyor\.yml
