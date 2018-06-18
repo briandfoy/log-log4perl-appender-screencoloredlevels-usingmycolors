@@ -7,7 +7,7 @@ no warnings;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.111';
+$VERSION = '0.112';
 
 use Term::ANSIColor qw(:constants color colored);
 use Log::Log4perl::Level;
