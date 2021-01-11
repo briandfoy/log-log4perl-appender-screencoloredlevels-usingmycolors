@@ -2,6 +2,14 @@
 
 =encoding utf8
 
+=for HTML <a href='https://ci.appveyor.com/project/briandfoy/Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors'><img src='https://ci.appveyor.com/api/projects/status/a?svg=true' /></a>
+
+=for HTML <a href='https://coveralls.io/github/briandfoy/Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors?branch=master'><img src='https://coveralls.io/repos/github/briandfoy/Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors/badge.svg?branch=master' alt='Coverage Status' /></a>
+
+=for HTML <a href="https://github.com/briandfoy/Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors.svg" /></a>
+
+=for HTML <a href="https://metacpan.org/pod/Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors"><img src="https://img.shields.io/cpan/v/Log-Log4perl-Appender-ScreenColoredLevels-UsingMyColors.svg" /></A>
+
 =head1 The Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors module
 
 This is the I<README> for the L<Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors> Perl module. You're probably
