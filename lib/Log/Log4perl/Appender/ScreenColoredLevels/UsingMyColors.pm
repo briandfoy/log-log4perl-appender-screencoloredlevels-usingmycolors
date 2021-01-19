@@ -111,9 +111,9 @@ sub log {
 
 =head1 DESCRIPTION
 
-This appender acts like Log::Log4perl::Appender::ScreenColoredLevels, but
+This appender acts like L<Log::Log4perl::Appender::ScreenColoredLevels>, but
 you get to choose the colors. You can choose any of the constants from
-Term::ANSIColor.
+L<Term::ANSIColor>.
 
 =head1 TO DO
 
