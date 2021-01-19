@@ -1,3 +1,5 @@
+use 5.008;
+
 package Log::Log4perl::Appender::ScreenColoredLevels::UsingMyColors;
 use strict;
 
