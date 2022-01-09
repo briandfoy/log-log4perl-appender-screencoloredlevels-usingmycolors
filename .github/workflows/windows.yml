@@ -66,15 +66,9 @@ jobs:
               run: |
                 perl Makefile.PL
                 make test
-# The disttest target creates the distribution, unwraps it, changes
-# into the dist dir, then runs the tests there. That checks that
-# everything that should be in the dist is in the dist. If you forget
-# to update MANIFEST with new modules, data files, and so on, you
-# should notice the error.
-            - name: Run distribution tests
-              run: |
-                perl Makefile.PL
-                make disttest
+# Can't run the dist tests because the path ends up being too long
+# for Windows.
+#
 # And, coverage reports
             - name: Run coverage tests
               env:
