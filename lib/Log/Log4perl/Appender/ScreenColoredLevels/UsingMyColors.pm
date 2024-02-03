@@ -6,7 +6,7 @@ use strict;
 use warnings;
 no warnings;
 
-our $VERSION = '0.114';
+our $VERSION = '0.115';
 
 use Term::ANSIColor qw(:constants color colored);
 use Log::Log4perl::Level;
